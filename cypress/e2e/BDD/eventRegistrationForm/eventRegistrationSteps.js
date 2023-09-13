@@ -1,10 +1,8 @@
 import { Given, When, Then } from "@badeball/cypress-cucumber-preprocessor";
 
-
-
-Given("I navigate to the homepage of the event", () => {
+Given("I navigate to the homepage of the event", function() {
     // Visit the Event Information homepage and validating the event information 
-    cy.visit("https://docs.google.com/forms/d/e/1FAIpQLSe8uL-dd5Z4Pzh1_yo9nB5vPoU2yaNZiulrTAbic8ZZbU-YqA/viewform?vc=0&c=0&w=1&flr=0");
+    cy.visit(this.data.url);
     cy.get(".OIC90c").should("have.text", "Event Timing: August 15th-18th, 2023Event Address: 123 Your Street Your City, ST 12345Contact us at (123) 456-7890 or no_reply@example.com");
 })
 
@@ -19,8 +17,6 @@ Then("I should not be able to navigate to the Event Information page when a vali
     cy.get('[data-value="Male"]').click();
     cy.get('input[type="date"]').type("1983-05-03");
     cy.get('textarea.tL9Q4c').type(this.data.organization);
-
- 
 
     // Validating the error message for the required fields 
     cy.get('.Fxmcue').contains("Next").click();
