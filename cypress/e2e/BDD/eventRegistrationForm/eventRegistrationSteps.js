@@ -20,6 +20,8 @@ Then("I should not be able to navigate to the Event Information page when a vali
     cy.get('input[type="date"]').type("1983-05-03");
     cy.get('textarea.tL9Q4c').type(this.data.organization);
 
+ 
+
     // Validating the error message for the required fields 
     cy.get('.Fxmcue').contains("Next").click();
     cy.get(".RHiWt").should("have.text", "This is a required question");
@@ -51,7 +53,7 @@ Then("I should not be able to submit the form when a validation error is display
 
     // Updaint the dietary requirement 
     cy.get('div[role="listbox"]').click();
-    cy.get('.OA0qNb').click();
+    cy.get(".OA0qNb div div").next().contains("Vegan").click();
 
     // Clicking the submit button and validating the error for the required fields
     cy.get('span.Fxmcue').contains("Submit").click();
