@@ -13,12 +13,12 @@ When("I navigate to the Personal Information page", () => {
     cy.get('.Fxmcue').contains("Next").click();
 })
 
-Then("I should not be able to navigate to the Event Information page when a validation error is displayed on the Personal Information page", () => {
+Then("I should not be able to navigate to the Event Information page when a validation error is displayed on the Personal Information page", function() {
     // Entering data for name, gender, date of birth and organization
-    cy.get('input[type="text"]').eq(0).type('Nagesh Podduturi');
+    cy.get('input[type="text"]').eq(0).type(this.data.name);
     cy.get('[data-value="Male"]').click();
     cy.get('input[type="date"]').type("1983-05-03");
-    cy.get('textarea.tL9Q4c').type("Crayon");
+    cy.get('textarea.tL9Q4c').type(this.data.organization);
 
     // Validating the error message for the required fields 
     cy.get('.Fxmcue').contains("Next").click();
@@ -30,9 +30,9 @@ Then("I should not be able to navigate to the Event Information page when a vali
     cy.get(".RHiWt").should("have.text", "Must be a valid email address");
 })
 
-Then("I should be able to navigate to the Event Information page when the valid data is entered for the relevant fields on the Personal Information page", () => {
+Then("I should be able to navigate to the Event Information page when the valid data is entered for the relevant fields on the Personal Information page", function () {
     // Enter valid email address and navigate to the Event Information page 
-    cy.get('input[type="email"]').clear().type("nageshpreddy@gmail.com");
+    cy.get('input[type="email"]').clear().type(this.data.email);
     cy.get('.Fxmcue').contains("Next").click();
 })
 
