@@ -65,3 +65,4 @@ Then("I should be able to submit the form when the valid data is entered for the
     // Validating the message after submitting the form
     cy.get('.vHW8K').should("have.text", "We have received your registration.Insert other information here.Save the link below, which can be used to edit your registration up until the registration closing date.");
 })
+
